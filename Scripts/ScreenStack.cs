@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
-using Toolkit.Common.Extensions;
+using Evolutex.Evolunity.Extensions;
 using Toolkit.Screens.Extensions;
 
 namespace Toolkit.Screens

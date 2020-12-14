@@ -1,7 +1,7 @@
 {
     "name": "Toolkit.Screens",
     "references": [
-        "Toolkit.Common.Runtime"
+        "Evolunity.Runtime"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
