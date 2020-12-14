@@ -7,7 +7,7 @@
 
 using System;
 using System.Reflection;
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 using DG.Tweening;
 using DG.Tweening.Core;
 
@@ -112,8 +112,8 @@ namespace Toolkit.Screens.Extensions
             if (tween == null || !tween.active)
                 return tween;
             
-            if (tween.target is Object unityObject)
-                return tween.AddOnComplete(() => Object.Destroy(unityObject));
+            if (tween.target is UnityObject unityObject)
+                return tween.AddOnComplete(() => UnityObject.Destroy(unityObject));
             else if (tween.target is IDisposable disposable)
                 return tween.AddOnComplete(() => disposable.Dispose());
             else 
