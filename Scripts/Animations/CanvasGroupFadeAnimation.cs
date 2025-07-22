@@ -5,7 +5,7 @@ using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Animations
 {
     public class CanvasGroupFadeAnimation : InOutTweenBehaviour
     {
@@ -20,6 +20,11 @@ namespace Toolkit.Screens
         private bool SameGameObjectWithTarget => _canvasGroup && _canvasGroup.gameObject == gameObject;
 
         private void Awake()
+        {
+            InitializeIfRequired();
+        }
+        
+        private void OnValidate()
         {
             InitializeIfRequired();
         }

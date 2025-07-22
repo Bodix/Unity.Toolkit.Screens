@@ -6,7 +6,7 @@ using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Animations
 {
     public class TextSizeAnimation : InOutTweenBehaviour
     {
@@ -33,12 +33,16 @@ namespace Toolkit.Screens
 
         public override Tween PlayIn()
         {
+            InitializeIfRequired();
+
             return DOVirtual.Float(InitialSize, TargetSize, Duration, value => Text.fontSize = value)
                 .SetEase(Ease);
         }
 
         public override Tween PlayOut()
         {
+            InitializeIfRequired();
+
             return DOVirtual.Float(TargetSize, InitialSize, Duration, value => Text.fontSize = value)
                 .SetEase(Ease);
         }

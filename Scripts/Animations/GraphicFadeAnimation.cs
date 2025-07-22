@@ -6,7 +6,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Animations
 {
     public class GraphicFadeAnimation : InOutTweenBehaviour
     {
@@ -21,6 +21,11 @@ namespace Toolkit.Screens
         private bool SameGameObjectWithTarget => _graphic && _graphic.gameObject == gameObject;
 
         private void Awake()
+        {
+            InitializeIfRequired();
+        }
+        
+        private void OnValidate()
         {
             InitializeIfRequired();
         }
