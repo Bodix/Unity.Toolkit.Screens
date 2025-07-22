@@ -1,41 +1,25 @@
-﻿// Copyright © 2025 Bogdan Nikolayev <bodix321@gmail.com>
-// All Rights Reserved
-
-using DG.Tweening;
+﻿using DG.Tweening;
+using Toolkit.Screens.Extensions;
 using UnityEngine;
 
 namespace Toolkit.Screens.Screens
 {
-    public abstract class Screen : MonoBehaviour
+    public class Screen : AbstractAnimatedScreen
     {
-        public virtual bool IsEnabled
+        [SerializeField]
+        private InOutTweenBehaviour _tweenBehaviour;
+
+        public override void Show()
         {
-            get => gameObject.activeSelf;
-            set => gameObject.SetActive(value);
+            gameObject.SetActive(true);
         }
 
-        public abstract void Show();
-
-        public abstract void Hide();
-        
-        public virtual Tween Push()
+        public override void Hide()
         {
-            return ScreenStack.Push(this);
+            gameObject.SetActive(false);
         }
 
-        public virtual Tween Pop()
-        {
-            return ScreenStack.Pop(this);
-        }
-        
-        public void PushImmediately()
-        {
-            ScreenStack.PushImmediately(this);
-        }
-        
-        public void PopImmediately()
-        {
-            ScreenStack.PopImmediately(this);
-        }
+        public override Tween ShowTween => _tweenBehaviour.PlayIn().AddOnStart(Show);
+        public override Tween HideTween => _tweenBehaviour.PlayOut().AddOnComplete(Hide);
     }
 }

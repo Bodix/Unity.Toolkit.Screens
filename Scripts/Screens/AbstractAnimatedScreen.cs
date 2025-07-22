@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace Toolkit.Screens.Screens
 {
-    public abstract class AnimatedScreen : Screen
+    public abstract class AbstractAnimatedScreen : AbstractScreen
     {
         public abstract Tween ShowTween { get; }
 
