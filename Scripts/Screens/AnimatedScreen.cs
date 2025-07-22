@@ -1,20 +1,16 @@
-﻿/*
- * Copyright (C) 2020 by Evolutex - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * Written by Bogdan Nikolaev <bodix321@gmail.com>
-*/
+﻿// Copyright © 2025 Bogdan Nikolayev <bodix321@gmail.com>
+// All Rights Reserved
 
 using DG.Tweening;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Screens
 {
     public abstract class AnimatedScreen : Screen
     {
         public abstract Tween ShowTween { get; }
 
         public abstract Tween HideTween { get; }
-        
+
         public override Tween Push()
         {
             return ScreenStack.Push(this);
@@ -24,12 +20,12 @@ namespace Toolkit.Screens
         {
             return ScreenStack.Pop(this);
         }
-        
+
         public new Tween PushImmediately()
         {
             return ScreenStack.PushImmediately(this);
         }
-        
+
         public new Tween PopImmediately()
         {
             return ScreenStack.PopImmediately(this);

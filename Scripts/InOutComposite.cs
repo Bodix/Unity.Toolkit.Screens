@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿// Copyright © 2025 Bogdan Nikolayev <bodix321@gmail.com>
+// All Rights Reserved
+
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 

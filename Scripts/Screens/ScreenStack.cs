@@ -1,9 +1,5 @@
-﻿/*
- * Copyright (C) 2020 by Evolutex - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * Written by Bogdan Nikolaev <bodix321@gmail.com>
-*/
+﻿// Copyright © 2025 Bogdan Nikolayev <bodix321@gmail.com>
+// All Rights Reserved
 
 using System;
 using System.Collections.Generic;
@@ -11,7 +7,7 @@ using DG.Tweening;
 using Evolutex.Evolunity.Extensions;
 using Toolkit.Screens.Extensions;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Screens
 {
     public static class ScreenStack
     {
