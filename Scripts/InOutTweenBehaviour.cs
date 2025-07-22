@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Toolkit.Screens
 {
-    public abstract class InOutTweenBehaviour : MonoBehaviour, IInOutTween
+    public abstract class InOutTweenBehaviour : MonoBehaviour
     {
         public abstract Tween PlayIn();
 

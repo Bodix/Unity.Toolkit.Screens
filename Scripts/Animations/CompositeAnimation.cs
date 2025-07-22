@@ -5,18 +5,18 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Animations
 {
-    public class InOutComposite : InOutTweenBehaviour
+    public class CompositeAnimation : InOutTweenBehaviour
     {
         [SerializeField]
-        private InOutCompositePart[] _tweenBehaviours;
+        private CompositeAnimationPart[] _tweenBehaviours;
 
         public override Tween PlayIn()
         {
             Sequence sequence = DOTween.Sequence();
 
-            foreach (InOutCompositePart part in _tweenBehaviours)
+            foreach (CompositeAnimationPart part in _tweenBehaviours)
             {
                 Tween tween = part.TweenBehaviour.PlayIn();
 
@@ -35,7 +35,7 @@ namespace Toolkit.Screens
 
             // In reversed order.
             float maxPosition = _tweenBehaviours.Select(x => x.Position).Max();
-            foreach (InOutCompositePart part in _tweenBehaviours)
+            foreach (CompositeAnimationPart part in _tweenBehaviours)
             {
                 Tween tween = part.TweenBehaviour.PlayOut();
 

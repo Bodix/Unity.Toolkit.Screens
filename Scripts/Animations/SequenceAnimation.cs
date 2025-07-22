@@ -5,9 +5,9 @@ using DG.Tweening;
 using Evolutex.Evolunity.Extensions;
 using UnityEngine;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Animations
 {
-    public class InOutSequence : InOutTweenBehaviour
+    public class SequenceAnimation : InOutTweenBehaviour
     {
         [SerializeField]
         private InOutTweenBehaviour[] _tweenBehaviours;

@@ -3,10 +3,10 @@
 
 using System;
 
-namespace Toolkit.Screens
+namespace Toolkit.Screens.Animations
 {
     [Serializable]
-    public struct InOutCompositePart
+    public struct CompositeAnimationPart
     {
         public InOutTweenBehaviour TweenBehaviour;
         public float Position;
