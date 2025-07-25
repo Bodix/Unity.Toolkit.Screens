@@ -16,6 +16,8 @@ namespace Toolkit.Tweens.Screens
 
         private static AbstractScreen CurrentScreen => stack.IsEmpty() ? null : stack.Peek();
 
+        public static bool IsInTransition => transition != null;
+
         public static Tween Push(AbstractScreen screen)
         {
             Sequence sequence = DOTween.Sequence();
@@ -27,11 +29,13 @@ namespace Toolkit.Tweens.Screens
                         sequence.Append(otherAnimatedScreen.HideTween);
                     else sequence.AppendCallback(otherScreen.Hide);
             }
+
             sequence.OnComplete(() =>
             {
                 screen.Show();
                 stack.Push(screen);
             });
+            sequence.OnKill(() => transition = null);
 
             return sequence;
         }
@@ -47,8 +51,10 @@ namespace Toolkit.Tweens.Screens
                         sequence.Append(otherAnimatedScreen.HideTween);
                     else sequence.AppendCallback(otherScreen.Hide);
             }
+
             sequence.Append(screen.ShowTween
                 .AddOnComplete(() => stack.Push(screen)));
+            sequence.OnKill(() => transition = null);
 
             return sequence;
         }
@@ -67,6 +73,7 @@ namespace Toolkit.Tweens.Screens
                 if (nextScreen is AbstractAnimatedScreen nextAnimatedScreen)
                     sequence.Append(nextAnimatedScreen.ShowTween);
                 else sequence.AppendCallback(nextScreen.Show);
+            sequence.OnKill(() => transition = null);
 
             return sequence;
         }
@@ -82,6 +89,7 @@ namespace Toolkit.Tweens.Screens
                 if (nextScreen is AbstractAnimatedScreen nextAnimatedScreen)
                     sequence.Append(nextAnimatedScreen.ShowTween);
                 else sequence.AppendCallback(nextScreen.Show);
+            sequence.OnKill(() => transition = null);
 
             return sequence;
         }
@@ -110,6 +118,7 @@ namespace Toolkit.Tweens.Screens
                             otherScreen.Hide();
                 })
                 .AddOnComplete(() => stack.Push(screen)));
+            sequence.OnKill(() => transition = null);
 
             return sequence;
         }
@@ -135,6 +144,7 @@ namespace Toolkit.Tweens.Screens
 
                     CurrentScreen?.Show();
                 }));
+            sequence.OnKill(() => transition = null);
 
             return sequence;
         }
@@ -208,7 +218,7 @@ namespace Toolkit.Tweens.Screens
             AbstractScreen screen = CurrentScreen;
             if (CurrentScreen == null)
                 return null;
-            
+
             stack.Pop();
             AbstractScreen nextScreen = CurrentScreen;
             stack.Push(screen);
