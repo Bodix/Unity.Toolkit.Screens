@@ -1,32 +1,30 @@
-﻿// Copyright © 2025 Bogdan Nikolayev <bodix321@gmail.com>
-// All Rights Reserved
-
-using DG.Tweening;
+﻿using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Toolkit.Tweens.Animations
 {
-    public class GraphicFadeAnimation : InOutTweenBehaviour
+    public class ScaleAnimation : InOutTweenBehaviour
     {
-        public float Alpha = 1;
+        public Vector3 TargetScale = new Vector3(1, 1, 1);
+        public Vector3 InitialScale = new Vector3(0, 0, 0);
         public float InDuration = 1;
         public float OutDuration = 1;
         public Ease InEase = Ease.Linear;
         public Ease OutEase = Ease.Linear;
 
+        [SerializeField]
+        private bool SameGameObjectWithTarget = true;
         [SerializeField, HideIf(nameof(SameGameObjectWithTarget))]
-        private Graphic _graphic;
+        private Transform _transform;
 
-        public Graphic Graphic => _graphic;
-        private bool SameGameObjectWithTarget => _graphic && _graphic.gameObject == gameObject;
+        public Transform Transform => _transform;
 
         private void Awake()
         {
             InitializeIfRequired();
         }
-        
+
         private void OnValidate()
         {
             InitializeIfRequired();
@@ -36,8 +34,8 @@ namespace Toolkit.Tweens.Animations
         {
             InitializeIfRequired();
 
-            return Graphic.DOFade(Alpha, InDuration)
-                .From(0)
+            return Transform.DOScale(TargetScale, InDuration)
+                .From(InitialScale)
                 .SetEase(InEase);
         }
 
@@ -45,15 +43,15 @@ namespace Toolkit.Tweens.Animations
         {
             InitializeIfRequired();
 
-            return Graphic.DOFade(0, OutDuration)
-                .From(Alpha)
+            return Transform.DOScale(InitialScale, OutDuration)
+                .From(TargetScale)
                 .SetEase(OutEase);
         }
 
         private void InitializeIfRequired()
         {
-            if (!Graphic)
-                _graphic = GetComponent<Graphic>();
+            if (!Transform && SameGameObjectWithTarget)
+                _transform = transform;
         }
     }
 }

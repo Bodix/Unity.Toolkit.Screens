@@ -1,8 +1,8 @@
 ﻿using DG.Tweening;
-using Toolkit.Screens.Extensions;
+using Toolkit.Tweens.Extensions;
 using UnityEngine;
 
-namespace Toolkit.Screens.Screens
+namespace Toolkit.Tweens.Screens
 {
     public class Screen : AbstractAnimatedScreen
     {

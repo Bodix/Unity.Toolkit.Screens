@@ -7,7 +7,7 @@ using DG.Tweening.Plugins.Options;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Toolkit.Screens
+namespace Toolkit.Tweens
 {
     [RequireComponent(typeof(AudioSource))]
     public class SoundEffect : MonoBehaviour

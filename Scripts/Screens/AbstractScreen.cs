@@ -4,7 +4,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Toolkit.Screens.Screens
+namespace Toolkit.Tweens.Screens
 {
     public abstract class AbstractScreen : MonoBehaviour
     {

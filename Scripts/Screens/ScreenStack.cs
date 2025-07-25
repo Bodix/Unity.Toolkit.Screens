@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Evolutex.Evolunity.Extensions;
-using Toolkit.Screens.Extensions;
+using Toolkit.Tweens.Extensions;
 
-namespace Toolkit.Screens.Screens
+namespace Toolkit.Tweens.Screens
 {
     public static class ScreenStack
     {

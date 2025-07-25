@@ -4,7 +4,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Toolkit.Screens
+namespace Toolkit.Tweens
 {
     public abstract class InOutTweenBehaviour : MonoBehaviour
     {

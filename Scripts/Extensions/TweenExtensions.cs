@@ -3,11 +3,11 @@
 
 using System;
 using System.Reflection;
-using UnityObject = UnityEngine.Object;
 using DG.Tweening;
 using DG.Tweening.Core;
+using UnityObject = UnityEngine.Object;
 
-namespace Toolkit.Screens.Extensions
+namespace Toolkit.Tweens.Extensions
 {
     public static class TweenExtensions
     {

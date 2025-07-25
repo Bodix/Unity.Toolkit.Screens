@@ -3,7 +3,7 @@
 
 using DG.Tweening;
 
-namespace Toolkit.Screens.Screens
+namespace Toolkit.Tweens.Screens
 {
     public abstract class AbstractAnimatedScreen : AbstractScreen
     {

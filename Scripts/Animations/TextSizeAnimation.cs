@@ -6,14 +6,16 @@ using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
-namespace Toolkit.Screens.Animations
+namespace Toolkit.Tweens.Animations
 {
     public class TextSizeAnimation : InOutTweenBehaviour
     {
         public float TargetSize = 36;
         public float InitialSize = 24;
-        public float Duration = 1;
-        public Ease Ease = Ease.Linear;
+        public float InDuration = 1;
+        public float OutDuration = 1;
+        public Ease EaseIn = Ease.Linear;
+        public Ease EaseOut = Ease.Linear;
 
         [SerializeField, HideIf(nameof(SameGameObjectWithTarget))]
         private TMP_Text _text;
@@ -35,16 +37,16 @@ namespace Toolkit.Screens.Animations
         {
             InitializeIfRequired();
 
-            return DOVirtual.Float(InitialSize, TargetSize, Duration, value => Text.fontSize = value)
-                .SetEase(Ease);
+            return DOVirtual.Float(InitialSize, TargetSize, InDuration, value => Text.fontSize = value)
+                .SetEase(EaseIn);
         }
 
         public override Tween PlayOut()
         {
             InitializeIfRequired();
 
-            return DOVirtual.Float(TargetSize, InitialSize, Duration, value => Text.fontSize = value)
-                .SetEase(Ease);
+            return DOVirtual.Float(TargetSize, InitialSize, OutDuration, value => Text.fontSize = value)
+                .SetEase(EaseOut);
         }
 
         private void InitializeIfRequired()

@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Toolkit.Screens.Animations
+namespace Toolkit.Tweens.Animations
 {
     [Serializable]
     public struct CompositeAnimationPart

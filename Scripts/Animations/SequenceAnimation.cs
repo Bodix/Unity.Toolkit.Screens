@@ -5,7 +5,7 @@ using DG.Tweening;
 using Evolutex.Evolunity.Extensions;
 using UnityEngine;
 
-namespace Toolkit.Screens.Animations
+namespace Toolkit.Tweens.Animations
 {
     public class SequenceAnimation : InOutTweenBehaviour
     {

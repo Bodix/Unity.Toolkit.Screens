@@ -5,13 +5,15 @@ using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Toolkit.Screens.Animations
+namespace Toolkit.Tweens.Animations
 {
     public class CanvasGroupFadeAnimation : InOutTweenBehaviour
     {
-        public float Alpha = 1f;
-        public float Duration = 0.5f;
-        public Ease Ease = Ease.Linear;
+        public float Alpha = 1;
+        public float InDuration = 1;
+        public float OutDuration = 1;
+        public Ease InEase = Ease.Linear;
+        public Ease OutEase = Ease.Linear;
 
         [SerializeField, HideIf(nameof(SameGameObjectWithTarget))]
         private CanvasGroup _canvasGroup;
@@ -33,18 +35,18 @@ namespace Toolkit.Screens.Animations
         {
             InitializeIfRequired();
 
-            return CanvasGroup.DOFade(Alpha, Duration)
+            return CanvasGroup.DOFade(Alpha, InDuration)
                 .From(0)
-                .SetEase(Ease);
+                .SetEase(InEase);
         }
 
         public override Tween PlayOut()
         {
             InitializeIfRequired();
 
-            return CanvasGroup.DOFade(0, Duration)
+            return CanvasGroup.DOFade(0, OutDuration)
                 .From(Alpha)
-                .SetEase(Ease);
+                .SetEase(OutEase);
         }
 
         private void InitializeIfRequired()
