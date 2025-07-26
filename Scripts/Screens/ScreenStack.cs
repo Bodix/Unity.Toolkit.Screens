@@ -155,6 +155,17 @@ namespace Toolkit.Tweens.Screens
             return sequence;
         }
 
+        public static Tween PopImmediatelyCurrentScreen()
+        {
+            if (CurrentScreen is AbstractAnimatedScreen currentAnimatedScreen)
+                return PopImmediately(currentAnimatedScreen);
+            else
+            {
+                PopImmediately(CurrentScreen);
+                return DOTween.Sequence();
+            }
+        }
+
         public static void Clear()
         {
             stack.Clear();
