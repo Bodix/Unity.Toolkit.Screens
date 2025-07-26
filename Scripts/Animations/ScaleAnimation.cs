@@ -14,7 +14,7 @@ namespace Toolkit.Tweens.Animations
         public Ease OutEase = Ease.Linear;
 
         [SerializeField]
-        private bool SameGameObjectWithTarget = true;
+        private bool SameGameObjectWithTarget = false;
         [SerializeField, HideIf(nameof(SameGameObjectWithTarget))]
         private Transform _transform;
 
