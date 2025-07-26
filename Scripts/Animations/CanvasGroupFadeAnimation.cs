@@ -9,7 +9,8 @@ namespace Toolkit.Tweens.Animations
 {
     public class CanvasGroupFadeAnimation : InOutTweenBehaviour
     {
-        public float Alpha = 1;
+        public float TargetAlpha = 1;
+        public float InitialAlpha = 0;
         public float InDuration = 1;
         public float OutDuration = 1;
         public Ease InEase = Ease.Linear;
@@ -35,8 +36,8 @@ namespace Toolkit.Tweens.Animations
         {
             InitializeIfRequired();
 
-            return CanvasGroup.DOFade(Alpha, InDuration)
-                .From(0)
+            return CanvasGroup.DOFade(TargetAlpha, InDuration)
+                .From(InitialAlpha)
                 .SetEase(InEase);
         }
 
@@ -44,8 +45,8 @@ namespace Toolkit.Tweens.Animations
         {
             InitializeIfRequired();
 
-            return CanvasGroup.DOFade(0, OutDuration)
-                .From(Alpha)
+            return CanvasGroup.DOFade(InitialAlpha, OutDuration)
+                .From(TargetAlpha)
                 .SetEase(OutEase);
         }
 

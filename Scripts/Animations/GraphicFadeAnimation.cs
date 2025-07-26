@@ -10,7 +10,8 @@ namespace Toolkit.Tweens.Animations
 {
     public class GraphicFadeAnimation : InOutTweenBehaviour
     {
-        public float Alpha = 1;
+        public float TargetAlpha = 1;
+        public float InitialAlpha = 0;
         public float InDuration = 1;
         public float OutDuration = 1;
         public Ease InEase = Ease.Linear;
@@ -36,8 +37,8 @@ namespace Toolkit.Tweens.Animations
         {
             InitializeIfRequired();
 
-            return Graphic.DOFade(Alpha, InDuration)
-                .From(0)
+            return Graphic.DOFade(TargetAlpha, InDuration)
+                .From(InitialAlpha)
                 .SetEase(InEase);
         }
 
@@ -45,8 +46,8 @@ namespace Toolkit.Tweens.Animations
         {
             InitializeIfRequired();
 
-            return Graphic.DOFade(0, OutDuration)
-                .From(Alpha)
+            return Graphic.DOFade(InitialAlpha, OutDuration)
+                .From(TargetAlpha)
                 .SetEase(OutEase);
         }
 
