@@ -14,8 +14,7 @@ namespace Toolkit.Tweens.Screens
         private static readonly Stack<AbstractScreen> stack = new Stack<AbstractScreen>(3);
         private static Tween transition;
 
-        private static AbstractScreen CurrentScreen => stack.IsEmpty() ? null : stack.Peek();
-
+        public static AbstractScreen CurrentScreen => stack.IsEmpty() ? null : stack.Peek();
         public static bool IsInTransition => transition != null;
 
         public static Tween Push(AbstractScreen screen)
@@ -92,6 +91,13 @@ namespace Toolkit.Tweens.Screens
             sequence.OnKill(() => transition = null);
 
             return sequence;
+        }
+
+        public static Tween PopCurrentScreen()
+        {
+            if (CurrentScreen is AbstractAnimatedScreen currentAnimatedScreen)
+                return Pop(currentAnimatedScreen);
+            else return Pop(CurrentScreen);
         }
 
         public static void PushImmediately(AbstractScreen screen)
